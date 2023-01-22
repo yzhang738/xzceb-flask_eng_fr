@@ -37,7 +37,11 @@ def french_to_english(french_text):
         model_id='fr-en').get_result()
     return english_text
 
-# text = "I am canadian and work as programmer"
-text = "Hello"
-translated_text=english_to_french(text)
-print(translated_text)
+def convert_dic_to_str(dict):
+    """
+        Since Watson translator returns translation results in python dictionaries, we need to convert them 
+        to strings for comparision
+    """
+    tran_list = dict['translations']
+    translated_text = tran_list[0].get('translation')
+    return translated_text
