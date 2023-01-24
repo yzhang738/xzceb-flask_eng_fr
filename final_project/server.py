@@ -1,7 +1,7 @@
-from machinetranslation import translator
+from machinetranslation.translator import english_to_french, french_to_english
 from flask import Flask, render_template, request
 #from machinetranslation import english_to_french, french_to_english, convert_dic_to_str
-import json
+import json 
 
 app = Flask("Web Translator")
 
@@ -9,14 +9,14 @@ app = Flask("Web Translator")
 def englishToFrench():
     textToTranslate = request.args.get('textToTranslate')
     # Write your code here
-    fr_translated_text = convert_dic_to_str(english_to_french(textToTranslate))
+    fr_translated_text = english_to_french(textToTranslate)
     return fr_translated_text
 
 @app.route("/frenchToEnglish")
 def frenchToEnglish():
     textToTranslate = request.args.get('textToTranslate')
     # Write your code here
-    en_translated_text = convert_dic_to_str(french_to_english(textToTranslate))
+    en_translated_text = french_to_english(textToTranslate)
     return en_translated_text
 
 @app.route("/index")
